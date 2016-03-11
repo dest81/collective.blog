@@ -54,8 +54,9 @@ class BlogListing(BrowserView):
                 'range': 'minmax'}
 
         tags = req.get('tags')
+        operator = req.get('operator', 'and')
         if tags:
-            self.query['Subject'] = {'query': tags, 'operator': 'and'}
+            self.query['Subject'] = {'query': tags, 'operator': operator}
 
         searchable_text = req.get('searchable_text')
         if searchable_text:
