@@ -16,6 +16,8 @@ from plone.supermodel import model
 from plone.z3cform.fieldsets.utils import move
 from z3c.form.interfaces import HIDDEN_MODE
 from zope.component import getUtility
+from plone.namedfile.field import NamedBlobImage
+from plone.app.multilingual.dx import directives as mdirectives
 
 from .. import _
 from ..interfaces import IBlogSettings
@@ -24,6 +26,13 @@ from ..interfaces import IBlogSettings
 # Interface class; used to define content-type schema.
 class IBlogEntry(model.Schema):
     """A Blog Entry."""
+
+    mdirectives.languageindependent('image_lst')
+    image_lst = NamedBlobImage(
+        title=_(u"Listing Image"),
+        description=_(u"Please upload an image."),
+        required=False,
+    )
 
     form.omitted('summary')
     summary = RichText(
