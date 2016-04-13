@@ -98,7 +98,7 @@ def _add_edit_update(self):
             fields[k] = v
 
     # Set hidden fields
-    fields['IDublinCore.description'].mode = HIDDEN_MODE
+    # fields['IDublinCore.description'].mode = HIDDEN_MODE
 
     registry = getUtility(IRegistry)
     show_lead_image = registry.forInterface(
